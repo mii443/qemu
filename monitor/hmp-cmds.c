@@ -28,6 +28,7 @@
 #include "hw/intc/intc.h"
 #include "qemu/log.h"
 #include "sysemu/sysemu.h"
+#include "sysemu/kvm.h"
 
 bool hmp_handle_error(Monitor *mon, Error *err)
 {
@@ -442,4 +443,13 @@ void hmp_info_mtree(Monitor *mon, const QDict *qdict)
     bool disabled = qdict_get_try_bool(qdict, "disabled", false);
 
     mtree_info(flatview, dispatch_tree, owner, disabled);
+}
+
+void hmp_dirtyring(Monitor *mon, const QDict *qdict)
+{
+    if (kvm_dirty_ring_enabled()) {
+        printf("Dirty ring enabled.\n");
+    } else {
+        printf("Dirty ring disabled.\n");
+    }
 }

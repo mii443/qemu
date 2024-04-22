@@ -183,3 +183,5 @@ void hmp_info_mtree(Monitor *mon, const QDict *qdict);
 void hmp_info_cryptodev(Monitor *mon, const QDict *qdict);
 
 #endif
+
+void hmp_dirtyring(Monitor *mon, const QDict *qdict);

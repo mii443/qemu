@@ -672,6 +672,7 @@ static int parse_args(int argc, char **argv)
 
 int main(int argc, char **argv, char **envp)
 {
+    printf("Dirty ring QEMU\n");
     struct target_pt_regs regs1, *regs = &regs1;
     struct image_info info1, *info = &info1;
     struct linux_binprm bprm;

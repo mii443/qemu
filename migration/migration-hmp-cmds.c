@@ -28,6 +28,7 @@
 #include "qemu/error-report.h"
 #include "qemu/sockets.h"
 #include "sysemu/runstate.h"
+#include "sysemu/kvm.h"
 #include "ui/qemu-spice.h"
 #include "sysemu/sysemu.h"
 #include "options.h"
@@ -234,6 +235,10 @@ void hmp_info_migrate(Monitor *mon, const QDict *qdict)
         monitor_printf(mon, "vfio device transferred: %" PRIu64 " kbytes\n",
                        info->vfio->transferred >> 10);
     }
+
+    monitor_printf(mon, "kvm_dirty_ring_enabled: %s\n",
+        kvm_dirty_ring_enabled() ? "on" : "off");
+
 
     qapi_free_MigrationInfo(info);
 }

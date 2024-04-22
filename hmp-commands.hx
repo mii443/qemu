@@ -1862,3 +1862,17 @@ SRST
   List event channels in the guest
 ERST
 #endif
+
+   {
+       .name       = "dirtyring",
+       .args_type  = "",
+       .params     = "",
+       .help       = "",
+       .cmd        = hmp_dirtyring,
+   },
+
+SRST
+``dirtyring``
+  Dirty ring
+ERST
+
