@@ -379,6 +379,13 @@ bool migrate_zero_copy_send(void)
     return s->capabilities[MIGRATION_CAPABILITY_ZERO_COPY_SEND];
 }
 
+bool migrate_dirty_ring(void)
+{
+    MigrationState *s = migrate_get_current();
+
+    return s->capabilities[MIGRATION_CAPABILITY_DIRTY_RING];
+}
+
 /* pseudo capabilities */
 
 bool migrate_multifd_flush_after_each_section(void)

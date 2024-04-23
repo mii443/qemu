@@ -236,8 +236,12 @@ void hmp_info_migrate(Monitor *mon, const QDict *qdict)
                        info->vfio->transferred >> 10);
     }
 
-    monitor_printf(mon, "kvm_dirty_ring_enabled: %s\n",
-        kvm_dirty_ring_enabled() ? "on" : "off");
+    if (kvm_enabled()) {
+        monitor_printf(mon, "kvm-dirty-ring-enabled: %s\n",
+            kvm_dirty_ring_enabled() ? "on" : "off");
+        monitor_printf(mon, "dirty-ring-capability: %s\n",
+            migrate_dirty_ring() ? "on" : "off");
+    }
 
 
     qapi_free_MigrationInfo(info);
